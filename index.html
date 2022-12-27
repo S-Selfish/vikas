@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <title>Settings for test</title>
+</head>
+
+<body>
+    <div class="quiz-wrapper">
+        <div class="settings">
+            <form id="form">
+                <h2>Settings:</h2>
+                <div class="block-diapason">
+                    <span>Choose subject: </span><select name="select" id="selector">
+                        
+                        <option value="psycho">Психология</option>
+                        <option value="pedagogics">Педагогика</option>
+                        <option value="history">История</option>
+                    </select>
+                </div>
+                <div class="block-diapason">
+                    <span>Choose lower diapason: </span><input id="lower" type="text"
+                        placeholder="1(Starts from the 1th question)"></br>
+                    <p id="count-from-error-msg" class="error-msg"> </p>
+                </div>
+                <div class="block-diapason">
+                    <span>Choose higher diapason: </span><input id="high" type="text"
+                        placeholder="100(Ends from the 100th question)"></br>
+                        <p id="count-to-error-msg" class="error-msg"> </p>
+
+                </div>
+                <div class="block-diapason">
+                    <span>How many questions: </span><input id="count" type="text"
+                        placeholder="Choose 25, like in test"></br>
+                    <p id="count-error-msg" class="error-msg"> </p>
+                    
+                </div>
+                <button class="settings__submit good_btn" id="submit_btn" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="js/index.js"></script>
+
+</html>
