@@ -132,7 +132,7 @@ questionItem.forEach(element => {
     })
 })
 
-const no = document.querySelector("#areusure-no")
+const no = document.querySelector(".areusure-no")
 const popup = document.querySelector(".popup-areusure")
 const submit = document.querySelector("#submit")
 console.log(popup)
@@ -150,7 +150,7 @@ popup.addEventListener("click", (e) => {
     }
 })
 
-const yes = document.querySelector('#areusure-yes')
+const yes = document.querySelector('.areusure-yes')
 yes.addEventListener('click', () => {
     const options = {
         method: 'POST',

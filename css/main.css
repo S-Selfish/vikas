@@ -19,26 +19,47 @@ body {
     display: block;
     max-width: 300px;
     max-height: 50px;
-    cursor: pointer;
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
     color: #000000;
     padding: 15px 30px;
     transition: all 0.1s ease;
-    border-radius: 10px;
+    border-radius: 7px;
 }
 
+.areusure-yes {
+    padding: 5px 15px;
+    margin-top: 15px;
+    font-weight: 600;
+    background-color: #47c2ff;
+    border: none;
+    border-radius: 7px;
+}
 
+.areusure-no {
+    padding: 5px 15px;
+    margin-top: 15px;
+    font-weight: 600;
+    background-color: #b3b3b3;
+    border: none;
+    border-radius: 7px;
+}
 
-.good_btn:hover {
+.areusure-no:hover {
+    background-color: #7e7e7e;
+}
+
+button:hover {
     background-color: #438faa;
+    cursor: pointer;
 }
 
-.good_btn:focus {
+button:focus {
     outline: none;
     background-color: #5ec6eb;
 }
+
 
 .quiz-wrapper {
     margin: 0;
@@ -76,7 +97,7 @@ h2 {
 .question-numitem {
     text-align: center;
     background-color: #b3b3b3;
-    border-radius: 5px;
+    border-radius: 7px;
     color: white;
     font-weight: 600;
     cursor: pointer;
@@ -130,7 +151,7 @@ h2 {
 
 .quiz-box {
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 7px;
     box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
     width: 80vw;
     position: relative;
@@ -166,7 +187,7 @@ ul li {
     font-size: 20px;
     margin: 15px 0;
     border: 1px solid #dddddd;
-    border-radius: 10px;
+    border-radius: 7px;
     padding: 10px 15px;
     cursor: pointer;
 }
@@ -200,7 +221,7 @@ p {
 
 .settings {
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 7px;
     box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
     max-width: 600px;
     padding: 50px;
@@ -231,7 +252,7 @@ p {
 
     .quiz-box {
         background-color: #fff;
-        border-radius: 10px;
+        border-radius: 7px;
         box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
         width: 100vw;
         margin-top: 15%;
@@ -266,7 +287,7 @@ p {
 
     .quiz-box {
         background-color: #fff;
-        border-radius: 10px;
+        border-radius: 7px;
         box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
         width: 100vw;
         margin-top: 30%;
@@ -337,34 +358,6 @@ p {
     justify-content: space-evenly;
 }
 
-#areusure-yes {
-    padding: 5px 15px;
-    margin-top: 15px;
-    font-weight: 600;
-    background-color: #31ff4d;
-    border: none;
-    border-radius: 5px;
-}
-
-#areusure-yes:hover {
-    box-shadow: 0px 4px 10px #31ff4d;
-    cursor: pointer;
-}
-
-#areusure-no {
-    padding: 5px 15px;
-    margin-top: 15px;
-    font-weight: 600;
-    background-color: #47c2ff;
-    border: none;
-    border-radius: 5px;
-}
-
-#areusure-no:hover {
-    box-shadow: 0px 4px 10px #47c2ff;
-    cursor: pointer;
-}
-
 .popup-text {
     font-size: 24px;
     color: #000;
@@ -381,10 +374,11 @@ small {
     transform: translate(-50%, -50%);
     background-color: #fff;
     padding: 30px;
-    border-radius: 5px;
+    border-radius: 7px;
     border:1px solid #444444
 }
 
 .popup-fuck {
     display: none;
 }
+
