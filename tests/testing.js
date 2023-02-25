@@ -251,7 +251,7 @@
       correct: 'c',
     },
     
-    {
+    /* {
       question:`<p style='padding-top:0pt;margin:0;color:#000000;padding-left:0;font-size:11pt;padding-bottom:10pt;font-family:"Calibri";line-height:1.1500000000000001;orphans:2;widows:2;text-align:left;padding-right:0'><span style='color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:12pt;font-family:"Times New Roman";font-style:normal'>Тип каналов связи (или режимов передач):</span></p><br>`,
       a: `<p style='padding-top:0pt;margin:0;color:#000000;padding-left:0;font-size:11pt;padding-bottom:10pt;font-family:"Calibri";line-height:1.1500000000000001;orphans:2;widows:2;text-align:left;padding-right:0'><span style='color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:12pt;font-family:"Times New Roman";font-style:normal'> Сложные</span></p>`,
       b: `<p style='padding-top:0pt;margin:0;color:#000000;padding-left:0;font-size:11pt;padding-bottom:10pt;font-family:"Calibri";line-height:1.1500000000000001;orphans:2;widows:2;text-align:left;padding-right:0'><span style='color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:12pt;font-family:"Times New Roman";font-style:normal'> Симплексные</span></p>`,
@@ -750,6 +750,6 @@
       e: `<p style='padding-top:0pt;margin:0;color:#000000;padding-left:0;font-size:11pt;padding-bottom:10pt;font-family:"Calibri";line-height:1.1500000000000001;orphans:2;widows:2;text-align:left;padding-right:0'><span style='color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:12pt;font-family:"Times New Roman";font-style:normal'> Логарифмическая функция, непрерывного аргумента</span></p>`,
       correct: 'c',
     },
-    
+   */  
     ];
   
