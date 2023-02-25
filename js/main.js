@@ -35,6 +35,11 @@ function loadQuiz(currentQuestionID) {
     d_text.innerHTML = currentQuizData.d;
     e_text.innerHTML = currentQuizData.e;
 
+    answer = myAnswers[currentQuestionID]
+    if (answer) {
+        document.querySelector("#"+answer).checked = true
+    }
+
     deselectCurrentQuestion()
     const questionNumbers = document.querySelectorAll(".question-numitem")
     questionNumbers[currentQuestionID].classList.add("current")
