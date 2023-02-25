@@ -48,7 +48,32 @@ function loadQuiz(currentQuestionID) {
 }
 /*Это то что тебе нужно брат // */
 /*                          <=  */
-const myAnswers = {}
+// Получение CSRF токена из cookies
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Найдем CSRF токен, если он есть
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+const myAnswers = {
+    csrfmiddlewaretoken: getCookie('csrftoken'), // Получение CSRF токена из cookies
+    test_pk: window.location.pathname.split('/').slice(-2, -1)[0],
+};
+
+function pushAnswer(answerId, myAnswer) {
+    myAnswers[answerId] = myAnswer
+    return console.log(myAnswers)
+}
 
 function pushAnswer(answerId, myAnswer) {
     myAnswers[answerId] = myAnswer
@@ -110,8 +135,20 @@ questionItem.forEach(element => {
 
 
 submit.addEventListener('click', () => {
-    currentQuestion += 1
-    loadQuiz(currentQuestion)
+    const options = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken') // Добавление CSRF токена в заголовок
+        },
+    body: JSON.stringify(myAnswers)
+        };
+    console.log(myAnswers)
+    fetch( 'http://127.0.0.1:8000/finish_test/', options )
+    .then( response => response.json() )
+    .then( response => {
+        // Do something with response.
+    } );
 })
 
 
