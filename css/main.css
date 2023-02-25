@@ -61,14 +61,15 @@ h3 {
     padding: 7px 10px;
 }
 
+
+
+.finished {
+    background-color: #1eda72;
+}
+
 .current {
     background-color: #3bbeee;
 }
-
-.finished {
-    background-color: #5bffa5;
-}
-
 
 /* .question-num {
 

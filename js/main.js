@@ -12,6 +12,19 @@ const e_text = document.getElementById('e_text');
 
 let currentQuestion = 0
 
+function deselectCurrentQuestion(){
+    const questionNumbers = document.querySelectorAll(".question-numitem")
+    questionNumbers.forEach(element => {
+        element.classList.remove("current")
+    })
+}
+
+function selectFinishedQuestion(){
+    const questionNumbers = document.querySelectorAll(".question-numitem")
+    questionNumbers[currentQuestion].classList.add("finished")
+}
+
+
 function loadQuiz(currentQuestionID) {
     const currentQuizData = quizData[currentQuestionID];
     questionElement.innerHTML = currentQuizData.question;
@@ -21,6 +34,12 @@ function loadQuiz(currentQuestionID) {
     c_text.innerHTML = currentQuizData.c;
     d_text.innerHTML = currentQuizData.d;
     e_text.innerHTML = currentQuizData.e;
+
+    deselectCurrentQuestion()
+    const questionNumbers = document.querySelectorAll(".question-numitem")
+    questionNumbers[currentQuestionID].classList.add("current")
+
+    
 }
 /*Это то что тебе нужно брат // */
 /*                          <=  */
@@ -39,15 +58,20 @@ li_list.forEach(element => {
     element.addEventListener("click", (event) => {
         if (!event.target.className) {
             pushAnswer(currentQuestion ,event.target.closest(".text").previousElementSibling.id)
-
+            
+            selectFinishedQuestion()
         } 
         if (event.target.className == "answer") {
             pushAnswer(currentQuestion, event.target.id)
+
+            selectFinishedQuestion()
         }
         event.target.childNodes.forEach(element => {
             if (element.className == "answer") {
                 event.target.childNodes[1].checked = true
                 pushAnswer(currentQuestion, event.target.childNodes[1].id)
+
+                selectFinishedQuestion()
             }
         })
            // Боже мой сколько форычей, за то мне кажется я нашёл ошибку в мобильной версии тестов
@@ -73,7 +97,6 @@ questionItem.forEach(element => {
             element.childNodes[1].checked = false
         })
 
-        e.target.closest(".question-numitem").classList.add("current")
         currentQuestion = e.target.innerText - 1
         loadQuiz(currentQuestion)
 
