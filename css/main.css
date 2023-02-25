@@ -334,6 +334,7 @@ p {
 .areusure {
     display: flex;
     gap: 10px;
+    justify-content: space-evenly;
 }
 
 #areusure-yes {
@@ -342,6 +343,7 @@ p {
     font-weight: 600;
     background-color: #31ff4d;
     border: none;
+    border-radius: 5px;
 }
 
 #areusure-yes:hover {
@@ -355,6 +357,7 @@ p {
     font-weight: 600;
     background-color: #47c2ff;
     border: none;
+    border-radius: 5px;
 }
 
 #areusure-no:hover {
@@ -378,6 +381,7 @@ small {
     transform: translate(-50%, -50%);
     background-color: #000;
     padding: 30px;
+    border-radius: 5px;
 }
 
 .popup-fuck {
