@@ -3,6 +3,8 @@ const answerElements = document.querySelectorAll('.answer');
 const questionElement = document.getElementById('question');
 const questionList = document.querySelector(".question-numlist")
 const questionWrapper = document.querySelector(".shit")
+let quizCounterCQ = document.querySelector(".quiz-counter__current-question")
+let quizCounterQA = document.querySelector(".quiz-counter__question-amount")
 
 const a_text = document.getElementById('a_text');
 const b_text = document.getElementById('b_text');
@@ -12,22 +14,26 @@ const e_text = document.getElementById('e_text');
 
 let currentQuestion = 0
 
-function deselectCurrentQuestion(){
+function deselectCurrentQuestion() {
     const questionNumbers = document.querySelectorAll(".question-numitem")
     questionNumbers.forEach(element => {
         element.classList.remove("current")
     })
 }
 
-function selectFinishedQuestion(){
+function selectFinishedQuestion() {
     const questionNumbers = document.querySelectorAll(".question-numitem")
     questionNumbers[currentQuestion].classList.add("finished")
 }
 
 
+quizCounterQA.innerHTML = quizData.length
+
 function loadQuiz(currentQuestionID) {
     const currentQuizData = quizData[currentQuestionID];
     questionElement.innerHTML = currentQuizData.question;
+    quizCounterCQ.innerHTML = currentQuestionID + 1
+
 
     a_text.innerHTML = currentQuizData.a;
     b_text.innerHTML = currentQuizData.b;
@@ -37,14 +43,14 @@ function loadQuiz(currentQuestionID) {
 
     answer = myAnswers[currentQuestionID]
     if (answer) {
-        document.querySelector("#"+answer).checked = true
+        document.querySelector("#" + answer).checked = true
     }
 
     deselectCurrentQuestion()
     const questionNumbers = document.querySelectorAll(".question-numitem")
     questionNumbers[currentQuestionID].classList.add("current")
 
-    
+
 }
 /*Это то что тебе нужно брат // */
 /*                          <=  */
@@ -72,12 +78,6 @@ const myAnswers = {
 
 function pushAnswer(answerId, myAnswer) {
     myAnswers[answerId] = myAnswer
-    return console.log(myAnswers)
-}
-
-function pushAnswer(answerId, myAnswer) {
-    myAnswers[answerId] = myAnswer
-    return console.log(myAnswers)
 }
 
 
@@ -87,10 +87,10 @@ let li_list = document.querySelectorAll(".li");
 li_list.forEach(element => {
     element.addEventListener("click", (event) => {
         if (!event.target.className) {
-            pushAnswer(currentQuestion ,event.target.closest(".text").previousElementSibling.id)
-            
+            pushAnswer(currentQuestion, event.target.closest(".text").previousElementSibling.id)
+
             selectFinishedQuestion()
-        } 
+        }
         if (event.target.className == "answer") {
             pushAnswer(currentQuestion, event.target.id)
 
@@ -104,7 +104,7 @@ li_list.forEach(element => {
                 selectFinishedQuestion()
             }
         })
-           // Боже мой сколько форычей, за то мне кажется я нашёл ошибку в мобильной версии тестов
+        // Боже мой сколько форычей, за то мне кажется я нашёл ошибку в мобильной версии тестов
     })
 })
 
@@ -116,7 +116,6 @@ for (let i = 1; i <= quizData.length; i++) {
 }
 questionList.insertAdjacentElement("afterbegin", questionWrapper)
 
-const submit = document.getElementById('submit');
 loadQuiz(currentQuestion);
 /*Это мои кнопочки отображают состояние current finished and standard*/
 const questionItem = document.querySelectorAll(".question-numitem")
@@ -133,22 +132,40 @@ questionItem.forEach(element => {
     })
 })
 
+const no = document.querySelector("#areusure-no")
+const popup = document.querySelector(".popup-areusure")
+const submit = document.querySelector("#submit")
+console.log(popup)
+no.addEventListener("click", () => {
+    popup.classList.toggle("popup-fuck")
+})
 
-submit.addEventListener('click', () => {
+submit.addEventListener("click", () => {
+    popup.classList.toggle("popup-fuck")
+})
+
+popup.addEventListener("click", (e) => {
+    if (e.target == popup) {
+        popup.classList.toggle("popup-fuck")
+    }
+})
+
+const yes = document.querySelector('#areusure-yes')
+yes.addEventListener('click', () => {
     const options = {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': getCookie('csrftoken') // Добавление CSRF токена в заголовок
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken') // Добавление CSRF токена в заголовок
         },
-    body: JSON.stringify(myAnswers)
-        };
+        body: JSON.stringify(myAnswers)
+    };
     console.log(myAnswers)
-    fetch( 'http://127.0.0.1:8000/finish_test/', options )
-    .then( response => response.json() )
-    .then( response => {
-        // Do something with response.
-    } );
+    fetch('http://127.0.0.1:8000/finish_test/', options)
+        .then(response => response.json())
+        .then(response => {
+            // Do something with response.
+        });
 })
 
 

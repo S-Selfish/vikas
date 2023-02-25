@@ -16,10 +16,30 @@
   </head>
 
   <body>
+    <div class="popup-areusure">
+      <div class="popup-box">
+        <div class="popup-text">
+          <h3>Ну что там, ты уже закончил(а)?</h3>
+          <small
+            >Советую хорошенько проверить на все ли вопросы ты ответил.. Попытка
+            всё-таки одна</small
+          >
+        </div>
+        <div class="areusure">
+          <button id="areusure-yes">Да, я хочу закончить с этим :(</button>
+          <button id="areusure-no">Нет брат, я передумал(а)</button>
+        </div>
+      </div>
+    </div>
     <div class="quiz-wrapper">
       <div class="quiz-box" id="quiz">
         <div class="quiz-header">
-          <h3 id="question_number"></h3>
+          <div class="quiz-counter">
+            <span class="quiz-counter__current-question">0</span>/<span
+              class="quiz-counter__question-amount"
+              >0</span
+            >
+          </div>
           <h2 id="question">Question</h2>
           <ul>
             <li id="li1" class="li">
@@ -43,17 +63,15 @@
               <label for="e" id="e_text" class="text">5 </label>
             </li>
           </ul>
-        </div>
-        <div class="question-numlist">
-          <div class="shit">
+          <div class="question-numlist">
+            <div class="shit"></div>
+            <button id="submit" class="good_btn">Завершить тест</button>
           </div>
         </div>
-        <button id="submit" class="good_btn">Завершить тест</button>
       </div>
     </div>
 
     <button class="leave-page good_btn">Настройки</button>
-
     <script src="tests/testing.js"></script>
     <script src="js/keyboard_interface.js"></script>
     <script src="js/main.js"></script>
