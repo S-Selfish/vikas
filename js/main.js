@@ -135,19 +135,24 @@ questionItem.forEach(element => {
 const no = document.querySelector(".areusure-no")
 const popup = document.querySelector(".popup-areusure")
 const submit = document.querySelector("#submit")
+const loader = document.querySelector(".loader")
+const loaderWrap = document.querySelector(".loader-wrap")
+const loaderText = document.querySelector(".loader-text")
 no.addEventListener("click", () => {
-    popup.classList.toggle("popup-fuck")
+    popup.classList.toggle("none")
 })
 
 submit.addEventListener("click", () => {
-    popup.classList.toggle("popup-fuck")
+    popup.classList.toggle("none")
 })
 
 popup.addEventListener("click", (e) => {
     if (e.target == popup) {
-        popup.classList.toggle("popup-fuck")
+        popup.classList.toggle("none")
     }
 })
+
+let isDataCome = false
 
 const yes = document.querySelector('.areusure-yes')
 yes.addEventListener('click', () => {
@@ -159,14 +164,30 @@ yes.addEventListener('click', () => {
         },
         body: JSON.stringify(myAnswers)
     };
-    console.log(myAnswers)
-    fetch('http://127.0.0.1:8000/finish_test/', options)
+    getResponse('http://127.0.0.1:8000/finish_test/', options)
+})
+async function getResponse(url, options) {
+    loaderWrap.classList.remove("none")
+    await fetch(url, options)
         .then(response => response.json())
         .then(data => {
             if ('redirect' in data) {
                 window.location.href = data.redirect;
             }
-        });
-})
+            return {data, isDataCome: true}
+        })
+        .then(data => {
+            if (data.isDataCome) {
+                loaderWrap.classList.add("none")
+            }
+        })
+        .catch(err => {
+            console.log(err)
+            loader.classList.add("none")
+            loaderText.style.fontSize = "40px"
+            loaderText.innerHTML = "Ошибка страницы"
+            return response.status(500).json({message:"Блин чувак, у нас тут ошибка произошла"})
+        })
 
+}
 
