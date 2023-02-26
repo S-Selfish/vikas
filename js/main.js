@@ -163,10 +163,10 @@ yes.addEventListener('click', () => {
     console.log(myAnswers)
     fetch('http://127.0.0.1:8000/finish_test/', options)
         .then(response => response.json())
-        .then(response => {
-            if ('redirect' in response) {
-                window.location.href = response.redirect;
-              }
+        .then(data => {
+            if ('redirect' in data) {
+                window.location.href = data.redirect;
+            }
         });
 })
 
