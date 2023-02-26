@@ -164,7 +164,9 @@ yes.addEventListener('click', () => {
     fetch('http://127.0.0.1:8000/finish_test/', options)
         .then(response => response.json())
         .then(response => {
-            // Do something with response.
+            if ('redirect' in response) {
+                window.location.href = response.redirect;
+              }
         });
 })
 
