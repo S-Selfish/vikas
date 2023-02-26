@@ -135,7 +135,6 @@ questionItem.forEach(element => {
 const no = document.querySelector(".areusure-no")
 const popup = document.querySelector(".popup-areusure")
 const submit = document.querySelector("#submit")
-console.log(popup)
 no.addEventListener("click", () => {
     popup.classList.toggle("popup-fuck")
 })
